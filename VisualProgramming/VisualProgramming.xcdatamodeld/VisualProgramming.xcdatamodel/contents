@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E261" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Customer" representedClassName="Customer" syncable="YES" codeGenerationType="class">
+        <attribute name="user_id" optional="YES" attributeType="String"/>
+        <attribute name="user_password" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Manufactor" representedClassName="Manufactor" syncable="YES" codeGenerationType="class">
+        <attribute name="user_id" optional="YES" attributeType="String"/>
+        <attribute name="user_password" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Orders" representedClassName="Orders" syncable="YES" codeGenerationType="class">
+        <attribute name="factory_id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="order_id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="order_quantity" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="product_id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="warehouse_id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="Products" representedClassName="Products" syncable="YES" codeGenerationType="class">
+        <attribute name="product_description" optional="YES" attributeType="String"/>
+        <attribute name="product_id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="product_name" optional="YES" attributeType="String"/>
+        <attribute name="product_owner" optional="YES" attributeType="String"/>
+        <attribute name="product_quantity" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="product_unit_price" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="product_warehouse" optional="YES" attributeType="String"/>
+        <relationship name="request" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Requests" inverseName="product" inverseEntity="Requests"/>
+    </entity>
+    <entity name="Requests" representedClassName="Requests" syncable="YES" codeGenerationType="class">
+        <attribute name="is_accepted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="product_id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="request_id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="request_quantity" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="product" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Products" inverseName="request" inverseEntity="Products"/>
+    </entity>
+    <entity name="Stock" representedClassName="Stock" syncable="YES" codeGenerationType="class">
+        <attribute name="factory_id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="product_id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="stock_id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="stock_quantity" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="warehouse_id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="Warehouses" representedClassName="Warehouses" syncable="YES" codeGenerationType="class">
+        <attribute name="warehouse_capacity" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="warehouse_id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="warehouse_location" optional="YES" attributeType="String"/>
+        <attribute name="warehouse_name" optional="YES" attributeType="String"/>
+        <attribute name="warehouse_owner" optional="YES" attributeType="String"/>
+    </entity>
+</model>
